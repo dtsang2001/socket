@@ -46,6 +46,7 @@ router.post('/register', csrfProtection, (req, res) => {
     if (db.get('user').find({account : req.body.account}).value()) {
         res.render('index', {
             controller : 'register',
+            csrfToken: req.csrfToken(),
             error : true
         });
     }
