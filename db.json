@@ -1,4 +1,27 @@
 {
-  "chat": [],
-  "user": []
+  "chat": [
+    {
+      "id": "H4IU3a4U82XWkuT0AAAC",
+      "content": "Hello",
+      "time": 1598953422008
+    }
+  ],
+  "user": [
+    {
+      "id": "H4IU3a4U82XWkuT0AAAC",
+      "account": "admin",
+      "name": "Admin",
+      "avatar": "",
+      "status": true,
+      "password": "$2b$10$YwrEWSq6QCoXdVfmNrw8O.jb8UbgvSwbOLJXjitIZOfkpxgA9MKKG"
+    },
+    {
+      "id": "OzMW9k9-mngd-N5FAAAH",
+      "account": "sangdepzai",
+      "name": "Dinh The Sang",
+      "avatar": "",
+      "status": false,
+      "password": "$2b$10$YwrEWSq6QCoXdVfmNrw8O.jb8UbgvSwbOLJXjitIZOfkpxgA9MKKG"
+    }
+  ]
 }

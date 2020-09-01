@@ -28,6 +28,7 @@ router.post('/', csrfProtection, (req, res) => {
     }else{
         res.render('index', {
             controller : 'user',
+            csrfToken: req.csrfToken(),
             error : true
         })
     }

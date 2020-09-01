@@ -30,8 +30,9 @@ app.use('/public', express.static( path.join(__dirname, 'public')))
 app.use('/uploads', express.static( path.join(__dirname, 'uploads')))
 
 app.use((req, res, next) => {
-    // global.BASE_URL = req.protocol+"://"+req.headers.host
     global.BASE_URL = "https://"+req.headers.host
+    // local thi bật cái này lên
+    // global.BASE_URL = req.protocol+"://"+req.headers.host
     next()
 })
 
