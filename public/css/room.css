@@ -1,0 +1,130 @@
+
+#block_chat{
+    background: #ffffff;
+}
+
+ul{
+    display: block;
+    list-style: none;
+    background: #fff;
+    margin: 0;
+    margin-bottom: 30px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 20px;
+    height: 400px;
+    overflow: auto;
+}
+
+ul::-webkit-scrollbar {
+    width: 2px;
+}
+ul::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+ul::-webkit-scrollbar-thumb {
+    background: #888;
+}
+ul::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+ul p{
+    display: block;
+    margin: 3px 0;
+}
+
+ul p span{
+    display: inline-block;
+    background: #FF5733;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+    max-width: 60%;
+}
+
+.user-connected span{
+    display: block;
+    text-align: center;
+    color: #777;
+    font-size: 13px;
+}
+
+.other{
+    text-align: right;
+}
+
+.other span{
+    background: #ffffff;
+    color: #FF5733;
+    border: 1px solid #FF5733;
+}
+
+.block{
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#chat{
+    position: relative;
+}
+
+.user_typing{
+    position: absolute;
+    bottom: -26px;
+    left: 0;
+    display: inline-flex;
+    padding: 7px 5px;
+    background: #aaa;
+    border-radius: 10px;
+}
+
+.user_typing .spinner-grow-sm{
+    width: 0.5rem;
+    height: 0.5rem;
+    background: #fff;
+    margin: 0 2px;
+}
+
+#member{
+    /*border: 1px solid #4e555b;*/
+    margin-top: 60px;
+    padding: 30px;
+}
+
+#member .item_user{
+    display: flex;
+}
+
+#member .item_user img{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+#member .item_user .user_avatar{
+    margin-right: 10px;
+}
+
+#member .item_user .item_info h4{
+    font-size: 15px;
+    margin: 8px 0 0 0;
+}
+
+#member .item_user .item_info p{
+    font-size: 13px;
+}
+
+#member .item_user .item_info p .tick{
+    display: inline-block;
+    margin-right: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #a71d2a;
+}
+
+#member .item_user .item_info p .online{
+    background: #28a745 !important;
+}

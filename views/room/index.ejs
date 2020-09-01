@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row">
+        <div id="block_chat" class="col-md-9 jumbotron">
+            <div style="text-align: right" id="info_user" data-id="<%= user.id %>" data-name="<%= user.name %>">
+                <span>Hello <b> <a href="user/profile/<%= user.account %>"><%= user.name %></a>  </b></span> / <span><a href="user/logout">Logout</a></span>
+            </div>
+            <hr class="my-2">
+            <div class="block">
+                <div id="chat">
+                    <ul id="box_chat" data-id="">
+
+                    </ul>
+                </div>
+                <form id="form_chat" action="" method="POST">
+                    <div class="form-group" style="display: flex">
+                        <input type="text" name="mess" id="message" style="height: 60px" class="form-control"
+                               placeholder="enter">
+                        <button type="submit" class="btn btn-danger">Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="member" class="col-md-3">
+
+        </div>
+    </div>
+</div>

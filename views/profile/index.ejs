@@ -1,0 +1,61 @@
+<div class="container">
+    <div>
+        <a href="<%=BASE_URL+"/"%>" class="btn btn-dark mt-3"> thoát</a>
+    </div>
+    <div class="row">
+        <div class="col-md-4 avatar">
+            <img src="<%= account.avatar === '' ? BASE_URL+"/uploads/avatar.jpg" : BASE_URL+"/"+account.avatar%>" alt="">
+            <h2><%= account.name %></h3>
+                <p>@<%= account.account %></p>
+
+                <% if (error) { %>
+                    <div class="alert alert-danger mt-5" role="alert">
+                        <strong>No no no ::)!</strong> <p>
+                            Điền như thế là không cập nhật được đâu con zai!!
+                        </p>
+                    </div>
+                <% } %>
+        </div>
+        <div class="col-md-8 info">
+            <form action="<%=BASE_URL+"/user/profile/"+ account.account%>" method="POST" id="form_create_user" enctype="multipart/form-data">
+                <div class="block_login">
+                    <h1 class="title" style="margin: 50px 0"><b>Thông tin cả nhân</b></h1>
+                    <div class="form-group">
+                        <input type="hidden" name="id">
+                        <label for=""><b>Ảnh đại diện</b></label>
+                        <div class="input-group mb-3">
+                            <div>
+                                <input type="file" name="avatar">
+                            </div>
+                        </div>
+                        <label for=""><b>Tên</b></label>
+                        <div class="input-group mb-3">
+                            <input type="text" name="name" value="<%= account.name %>" class="form-control"
+                                   placeholder="Tên">
+                        </div>
+                        <button type="submit" class="btn btn-danger float-right">Cập nhật</button>
+                    </div>
+                </div>
+            </form>
+
+            <form action="<%=BASE_URL+"/user/profile/pass/"+ account.account%>" method="POST" id="form_create_user">
+                <div class="block_login">
+                    <h3 class="title" style="margin: 100px 0 10px"><b>Đối mật khẩu</b></h3>
+                    <% if (error === 0) { %>
+                        <div class="alert alert-success" role="alert">
+                            <strong>Ok, được rồi đấy ::)!</strong>
+                        </div>
+                    <% } %>
+                    <div class="form-group">
+                        <input type="hidden" name="id">
+                        <input type="password" name="password_old" class="mb-3 form-control" minlength="5" required
+                               placeholder="Mật khẩu cũ">
+                        <input type="password" name="password_new" class="mb-3 form-control" minlength="5" required
+                               placeholder="Mật khẩu mới">
+                        <button type="submit" class="btn btn-danger float-right">Cập nhật</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

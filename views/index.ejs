@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <%- include("./layout/head.ejs")%>
+    <link rel="stylesheet" href="<%=BASE_URL%>/public/css/<%=controller%>.css">
+</head>
+<body>
+    <%- include("./"+controller+"/index.ejs")%>
+</body>
+<%- include("./layout/script.ejs")%>
+<script src="<%=BASE_URL%>/public/js/<%=controller%>.js"></script>
+</html>
