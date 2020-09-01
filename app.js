@@ -12,6 +12,10 @@ const port = process.env.PORT || 3000;
 const router = require('./router/index');
 const socket = require('./socket/index');
 
+http.listen(port, () => {
+    console.log('Listen in port '+port)
+})
+
 db.defaults({ chat: [], user: []})
     .write()
 
@@ -35,7 +39,3 @@ router._router(app);
 
 //socket
 socket._socket(io);
-
-http.listen(port, () => {
-    console.log('Listen in port '+port)
-})
