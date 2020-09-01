@@ -10,6 +10,7 @@ const csrfProtection = csurf({ cookie: true });
 const uploads = multer({ dest: 'uploads/'});
 
 router.get('/', csrfProtection, (req, res) => {
+    res.clearCookie('userId', {signed: true});
     res.render('index', {
         controller : 'user',
         csrfToken: req.csrfToken(),
