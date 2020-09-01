@@ -3,18 +3,21 @@ const db = require('../db');
 const fs = require('fs');
 const multer  = require('multer');
 const bcrypt = require('bcrypt');
+const csurf = require('csurf');
 const salt = bcrypt.genSaltSync(10);
 
+const csrfProtection = csurf({ cookie: true });
 const uploads = multer({ dest: 'uploads/'});
 
-router.get('/', (req, res) => {
+router.get('/', csrfProtection, (req, res) => {
     res.render('index', {
         controller : 'user',
+        csrfToken: req.csrfToken(),
         error : false
     });
 })
 
-router.post('/', (req, res) => {
+router.post('/', csrfProtection, (req, res) => {
 
     let auth = db.get('user').find({account : req.body.account}).value()
     let pass = req.body.password ? req.body.password : ''
@@ -30,14 +33,15 @@ router.post('/', (req, res) => {
     }
 })
 
-router.get('/register', (req, res) => {
+router.get('/register', csrfProtection, (req, res) => {
     res.render('index', {
         controller : 'register',
+        csrfToken: req.csrfToken(),
         error : false
     });
 })
 
-router.post('/register', (req, res) => {
+router.post('/register', csrfProtection, (req, res) => {
     if (db.get('user').find({account : req.body.account}).value()) {
         res.render('index', {
             controller : 'register',
@@ -59,19 +63,20 @@ router.post('/register', (req, res) => {
     res.redirect('/user')
 })
 
-router.get('/profile/:account', (req, res) => {
+router.get('/profile/:account', csrfProtection, (req, res) => {
     let account  = db.get('user')
                     .find({account : req.params.account})
                     .value()
 
     res.render('index', {
         controller : 'profile',
+        csrfToken: req.csrfToken(),
         account : account,
         error : false
     })
 })
 
-router.post('/profile/:account', uploads.single('avatar'), (req, res) => {
+router.post('/profile/:account', uploads.single('avatar'), csrfProtection, (req, res) => {
     let error = false;
     let account  = db.get('user')
         .find({account : req.params.account})
@@ -101,12 +106,13 @@ router.post('/profile/:account', uploads.single('avatar'), (req, res) => {
 
     res.render('index', {
         controller : 'profile',
+        csrfToken: req.csrfToken(),
         account : account,
         error : error
     })
 })
 
-router.post('/profile/pass/:account', (req, res) => {
+router.post('/profile/pass/:account', csrfProtection, (req, res) => {
     let account = db.get('user')
                 .find({account : req.params.account})
                 .value()
@@ -129,6 +135,7 @@ router.post('/profile/pass/:account', (req, res) => {
 
     res.render('index', {
         controller : 'profile',
+        csrfToken: req.csrfToken(),
         account : account,
         error : error
     })

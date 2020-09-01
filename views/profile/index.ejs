@@ -21,6 +21,7 @@
                 <div class="block_login">
                     <h1 class="title" style="margin: 50px 0"><b>Thông tin cả nhân</b></h1>
                     <div class="form-group">
+                        <input type="hidden" name="_csrf" id="_csrf" value="<%= csrfToken%>">
                         <input type="hidden" name="id">
                         <label for=""><b>Ảnh đại diện</b></label>
                         <div class="input-group mb-3">
@@ -48,6 +49,7 @@
                     <% } %>
                     <div class="form-group">
                         <input type="hidden" name="id">
+                        <input type="hidden" name="_csrf" id="_csrf" value="<%= csrfToken%>">
                         <input type="password" name="password_old" class="mb-3 form-control" minlength="5" required
                                placeholder="Mật khẩu cũ">
                         <input type="password" name="password_new" class="mb-3 form-control" minlength="5" required

@@ -8,6 +8,7 @@
         <%}%>
         <div class="form-group">
             <input type="hidden" name="id">
+            <input type="hidden" name="_csrf" id="_csrf" value="<%= csrfToken%>">
             <input type="text" name="account" class="form-control" placeholder="Tài khoản" >
             <input type="password" name="password" class="form-control" placeholder="Mật khẩu" >
             <button type="submit" class="btn btn-danger">Đăng nhập</button>
