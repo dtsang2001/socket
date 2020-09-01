@@ -1,6 +1,7 @@
 
 #block_chat{
     background: #ffffff;
+    padding-bottom: 0;
 }
 
 ul{
@@ -11,26 +12,28 @@ ul{
     margin-bottom: 30px;
     border: 1px solid #ced4da;
     border-radius: 5px;
-    padding: 20px;
+    padding: 5px;
     height: 400px;
     overflow: auto;
 }
 
-ul::-webkit-scrollbar {
-    width: 2px;
+ul li img{
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+    border-radius: 50%;
 }
-ul::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-ul::-webkit-scrollbar-thumb {
-    background: #888;
-}
-ul::-webkit-scrollbar-thumb:hover {
-    background: #555;
+
+ul li h5{
+    display: inline-block;
+    font-size: 14px;
+    padding: 0 10px;
 }
 
 ul p{
+    font-size: 12px;
     display: block;
+    padding: 0 30px;
     margin: 3px 0;
 }
 
@@ -38,7 +41,8 @@ ul p span{
     display: inline-block;
     background: #FF5733;
     color: white;
-    padding: 5px 10px;
+    padding: 3px 10px;
+    line-height: 20px;
     border-radius: 10px;
     max-width: 60%;
 }
@@ -54,6 +58,10 @@ ul p span{
     text-align: right;
 }
 
+.other img{
+    float: right;
+}
+
 .other span{
     background: #ffffff;
     color: #FF5733;
@@ -67,6 +75,13 @@ ul p span{
 
 #chat{
     position: relative;
+}
+
+#info_user img{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .user_typing{
@@ -87,9 +102,10 @@ ul p span{
 }
 
 #member{
-    /*border: 1px solid #4e555b;*/
     margin-top: 60px;
     padding: 30px;
+    max-height: 400px;
+    overflow: auto;
 }
 
 #member .item_user{
@@ -127,4 +143,24 @@ ul p span{
 
 #member .item_user .item_info p .online{
     background: #28a745 !important;
+}
+
+ul::-webkit-scrollbar, #member::-webkit-scrollbar {
+    width: 2px;
+}
+ul::-webkit-scrollbar-track, #member::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+ul::-webkit-scrollbar-thumb, #member::-webkit-scrollbar-thumb {
+    background: #888;
+}
+ul::-webkit-scrollbar-thumb:hover, #member::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+@media only screen and (max-width: 764px) {
+    #member{
+        margin-top: 0;
+        padding: 0 30px;
+    }
 }

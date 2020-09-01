@@ -77,7 +77,7 @@ router.post('/profile/:account', uploads.single('avatar'), (req, res) => {
         .find({account : req.params.account})
         .value()
 
-    let avatar = '';
+    let avatar = account.avatar;
 
     if (req.file){
         if (req.file.mimetype.split('/')[0] !== 'image') {

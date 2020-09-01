@@ -1,15 +1,10 @@
 
 const db = require('../db');
 let data = db.get('chat').value();
-let list_user = db.get('user').value();
 
 let _socket = (io) => {
     // connection
     io.on('connection', (socket) => {
-
-        socket.on('list user', () => {
-            socket.emit
-        })
 
         socket.on('user connected', (data) => {
             socket.username = data.name;
@@ -23,12 +18,17 @@ let _socket = (io) => {
                     .assign({status : true})
                     .value()
 
-                io.emit('user connected', db.get('user').value())
+                io.emit('user connected', db.get('user').sortBy('status').value())
             }
         })
 
         if (data.length > 0) {
-            socket.emit('send data', data);
+            data.forEach((value) => {
+                socket.emit('user_chat', {
+                    user: db.get('user').find({id: value.id}).value(),
+                    content: value.content
+                })
+            })
         }
 
         socket.on('disconnect', () => {
@@ -38,7 +38,7 @@ let _socket = (io) => {
                     .assign({status : false})
                     .value()
 
-                io.emit('user disconnected', db.get('user').value())
+                io.emit('user disconnected', db.get('user').sortBy('status').value())
             }
         })
 
@@ -46,14 +46,14 @@ let _socket = (io) => {
 
             db.get('chat')
                 .push({
-                    name: socket.username,
                     id: socket.userid,
-                    content : data})
+                    content : data,
+                    time : Date.now()
+                })
                 .write()
 
             io.emit('user_chat', {
-                name : socket.username,
-                id : socket.userid,
+                user : db.get('user').find({id : socket.userid}).value(),
                 content : data
             })
         })
