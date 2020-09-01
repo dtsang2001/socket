@@ -22,7 +22,7 @@ let _socket = (io) => {
             }
         })
 
-        if (data.length > 0) {
+        if (data.length) {
             data.forEach((value) => {
                 socket.emit('user_chat', {
                     user: db.get('user').find({id: value.id}).value(),
